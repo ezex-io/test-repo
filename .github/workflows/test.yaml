@@ -11,8 +11,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - run: ls -a
-
       - name: Test and Debug
         run: |
           echo "REP_VAR=${{ vars.REP_VAR }}"
@@ -24,8 +22,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - run: ls -a
 
       - name: Test and Debug (test-env)
         run: |
