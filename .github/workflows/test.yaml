@@ -1,6 +1,6 @@
 name: Debug ENV and SECRET
 
-on: [push]
+on: [push, pull_request]
 
 env:
   ENV_TEST: "This is a test env var"
