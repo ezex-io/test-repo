@@ -1,0 +1,31 @@
+name: Debug ENV and SECRET
+
+on: [push]
+
+env:
+  ENV_TEST: "This is a test env var"
+
+jobs:
+  debug-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: TEst and Debug
+        run: |
+          echo "REP_VAR=${{ vars.REP_VAR }}"
+          echo "REP_SECRET=${{ secrets.REP_SECRET }}"
+
+  debug-env:
+    runs-on: ubuntu-latest
+    environment: test-env
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: TEst and Debug
+        run: |
+          echo "ENV_VAR=${{ vars.TEST_ENV_VAR }}"
+          echo "ENV_SECRET=${{ secrets.TEST_ENV_SECRET }}"
+
