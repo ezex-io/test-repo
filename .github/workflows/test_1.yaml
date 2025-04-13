@@ -1,4 +1,4 @@
-name: Debug ENV and SECRET
+name: TEST1
 permissions:
   contents: read
 
@@ -31,20 +31,3 @@ jobs:
         run: |
           echo "ENV_VAR=${{ vars.TEST_ENV_VAR }}"
           echo "ENV_SECRET=${{ secrets.TEST_ENV_SECRET }}"
-
-  upload-pr:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - run: ls -a
-
-      - name: Save PR number
-        run: |
-          mkdir -p ./pr
-          echo ${{ github.event.number }} > ./pr/NR
-      - uses: actions/upload-artifact@v4
-        with:
-          name: pr
-          path: pr/
