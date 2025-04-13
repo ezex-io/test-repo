@@ -1,0 +1,36 @@
+name: "Pull Request Target"
+permissions:
+  contents: read
+
+on:
+  pull_request_target
+
+jobs:
+  debug-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - run: ls -a
+
+      - name: Test and Debug
+        run: |
+          echo "REP_VAR=${{ vars.REP_VAR }}"
+          echo "REP_SECRET=${{ secrets.REP_SECRET }}"
+
+  debug-env-e2e:
+    runs-on: ubuntu-latest
+    environment: test-env
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - run: ls -a
+
+      - name: Test and Debug (test-env)
+        run: |
+          echo "ENV_VAR=${{ vars.TEST_ENV_VAR }}"
+          echo "ENV_SECRET=${{ secrets.TEST_ENV_SECRET }}"

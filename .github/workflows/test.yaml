@@ -4,9 +4,6 @@ permissions:
 
 on: [push, pull_request]
 
-env:
-  ENV_TEST: "This is a test env var"
-
 jobs:
   debug-repo:
     runs-on: ubuntu-latest
