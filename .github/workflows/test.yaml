@@ -1,4 +1,6 @@
 name: Debug ENV and SECRET
+permissions:
+  contents: read
 
 on: [push, pull_request]
 
