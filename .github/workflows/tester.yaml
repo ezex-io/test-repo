@@ -9,7 +9,7 @@ on:
 
 
 jobs:
-  debug-repo:
+  debug-repo-e2e:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
@@ -27,7 +27,7 @@ jobs:
           echo "REP_VAR=${{ vars.REP_VAR }}"
           echo "REP_SECRET=${{ secrets.REP_SECRET }}"
 
-  debug-env:
+  debug-env-e2e:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     environment: test-env
