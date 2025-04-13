@@ -1,4 +1,4 @@
-name: Packager
+name: E2E Tester
 permissions:
   contents: read
 
