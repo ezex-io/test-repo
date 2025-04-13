@@ -14,7 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-
       - name: TEst and Debug
         run: |
           echo "REP_VAR=${{ vars.REP_VAR }}"
@@ -32,3 +31,17 @@ jobs:
           echo "ENV_VAR=${{ vars.TEST_ENV_VAR }}"
           echo "ENV_SECRET=${{ secrets.TEST_ENV_SECRET }}"
 
+  upload-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Save PR number
+        run: |
+          mkdir -p ./pr
+          echo ${{ github.event.number }} > ./pr/NR
+      - uses: actions/upload-artifact@v2
+        with:
+          name: pr
+          path: pr/
